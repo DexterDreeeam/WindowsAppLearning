@@ -11,7 +11,11 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Winrt_CppWinrt", "Winrt_Cpp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uwp_Cs", "Uwp_Cs\Uwp_Cs.csproj", "{AC337AE6-4D4F-4C35-8096-9AD55B94C1D2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App_Cs_Winui3", "App_Cs_Winui3\App_Cs_Winui3.csproj", "{4C3C4952-55AB-48DB-BDEB-3D99F2762C7E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "App_Cs_Winui3", "App_Cs_Winui3\App_Cs_Winui3.csproj", "{4C3C4952-55AB-48DB-BDEB-3D99F2762C7E}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "App_Cpp", "App_Cpp\App_Cpp.vcxproj", "{EA513789-3A3C-4116-93A9-F9E758AB3C8D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Winrt_Cs_Winui3", "Winrt_Cs_Winui3\Winrt_Cs_Winui3.csproj", "{48FB966A-CD73-4721-A00B-C41F097B2A1C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -32,6 +36,10 @@ Global
 		{4C3C4952-55AB-48DB-BDEB-3D99F2762C7E}.Debug|x64.ActiveCfg = Debug|x64
 		{4C3C4952-55AB-48DB-BDEB-3D99F2762C7E}.Debug|x64.Build.0 = Debug|x64
 		{4C3C4952-55AB-48DB-BDEB-3D99F2762C7E}.Debug|x64.Deploy.0 = Debug|x64
+		{EA513789-3A3C-4116-93A9-F9E758AB3C8D}.Debug|x64.ActiveCfg = Debug|x64
+		{EA513789-3A3C-4116-93A9-F9E758AB3C8D}.Debug|x64.Build.0 = Debug|x64
+		{48FB966A-CD73-4721-A00B-C41F097B2A1C}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{48FB966A-CD73-4721-A00B-C41F097B2A1C}.Debug|x64.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
