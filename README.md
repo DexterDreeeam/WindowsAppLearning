@@ -1,3 +1,4 @@
 # WindowsAppLearning
 
-Simplest App to practice C++/CX, C++/WinRT, C#/UWP and C#/.NET
+C++/CX, C++/WinRT, C#/UWP, C#/.NET
+Simplest practices
