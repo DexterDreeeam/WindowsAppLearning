@@ -1,0 +1,9 @@
+namespace Winrt_CppWinrt
+{
+    [default_interface]
+    runtimeclass Class
+    {
+        Class();
+        Int32 MyProperty;
+    }
+}

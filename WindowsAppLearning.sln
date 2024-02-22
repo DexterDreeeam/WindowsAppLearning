@@ -1,0 +1,42 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34607.119
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Uwp_CppCx", "Uwp_CppCx\Uwp_CppCx.vcxproj", "{716B52B9-F0CC-4358-B0D3-03DE07355C28}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Uwp_CppWinrt", "Uwp_CppWinrt\Uwp_CppWinrt.vcxproj", "{C41AD7E6-14C8-48EF-BF1C-98E5D0B5B499}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Winrt_CppWinrt", "Winrt_CppWinrt\Winrt_CppWinrt.vcxproj", "{D5AA5D81-42BE-4630-838B-A7B99A068ADB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uwp_Cs", "Uwp_Cs\Uwp_Cs.csproj", "{AC337AE6-4D4F-4C35-8096-9AD55B94C1D2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App_Cs_Winui3", "App_Cs_Winui3\App_Cs_Winui3.csproj", "{4C3C4952-55AB-48DB-BDEB-3D99F2762C7E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{716B52B9-F0CC-4358-B0D3-03DE07355C28}.Debug|x64.ActiveCfg = Debug|x64
+		{716B52B9-F0CC-4358-B0D3-03DE07355C28}.Debug|x64.Build.0 = Debug|x64
+		{716B52B9-F0CC-4358-B0D3-03DE07355C28}.Debug|x64.Deploy.0 = Debug|x64
+		{C41AD7E6-14C8-48EF-BF1C-98E5D0B5B499}.Debug|x64.ActiveCfg = Debug|x64
+		{C41AD7E6-14C8-48EF-BF1C-98E5D0B5B499}.Debug|x64.Build.0 = Debug|x64
+		{C41AD7E6-14C8-48EF-BF1C-98E5D0B5B499}.Debug|x64.Deploy.0 = Debug|x64
+		{D5AA5D81-42BE-4630-838B-A7B99A068ADB}.Debug|x64.ActiveCfg = Debug|x64
+		{D5AA5D81-42BE-4630-838B-A7B99A068ADB}.Debug|x64.Build.0 = Debug|x64
+		{AC337AE6-4D4F-4C35-8096-9AD55B94C1D2}.Debug|x64.ActiveCfg = Debug|x64
+		{AC337AE6-4D4F-4C35-8096-9AD55B94C1D2}.Debug|x64.Build.0 = Debug|x64
+		{AC337AE6-4D4F-4C35-8096-9AD55B94C1D2}.Debug|x64.Deploy.0 = Debug|x64
+		{4C3C4952-55AB-48DB-BDEB-3D99F2762C7E}.Debug|x64.ActiveCfg = Debug|x64
+		{4C3C4952-55AB-48DB-BDEB-3D99F2762C7E}.Debug|x64.Build.0 = Debug|x64
+		{4C3C4952-55AB-48DB-BDEB-3D99F2762C7E}.Debug|x64.Deploy.0 = Debug|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7DAC9327-2B1F-4274-85A8-612A1B70FBA5}
+	EndGlobalSection
+EndGlobal
