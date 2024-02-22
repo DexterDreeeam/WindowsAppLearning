@@ -9,13 +9,12 @@
 
 namespace Uwp_CppCx
 {
-	/// <summary>
-	/// An empty page that can be used on its own or navigated to within a Frame.
-	/// </summary>
-	public ref class MainPage sealed
-	{
-	public:
-		MainPage();
-
-	};
+    /// <summary>
+    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// </summary>
+    public ref class MainPage sealed
+    {
+    public:
+        MainPage();
+    };
 }
