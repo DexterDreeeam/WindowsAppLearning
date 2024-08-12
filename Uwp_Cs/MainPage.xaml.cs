@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -25,6 +26,27 @@ namespace Uwp_Cs
         public MainPage()
         {
             this.InitializeComponent();
+            Task.Run(async () => await RunLogicAsync());
+        }
+
+        public async Task RunLogicAsync()
+        {
+            try
+            {
+                var mediaManager = new MediaManager();
+                await mediaManager.InitializeAsync();
+                while (true)
+                {
+                    await Task.Delay(2000);
+                    await mediaManager.PlayAsync();
+                    await Task.Delay(2000);
+                    await mediaManager.PauseAsync();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
         }
     }
 }
