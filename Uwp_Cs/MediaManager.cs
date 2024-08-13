@@ -11,6 +11,7 @@ namespace Uwp_Cs
 {
     using SessionManager = GlobalSystemMediaTransportControlsSessionManager;
     using Session = GlobalSystemMediaTransportControlsSession;
+    using PlaybackStatus = GlobalSystemMediaTransportControlsSessionPlaybackStatus;
 
     internal class MediaManager : IDisposable
     {
@@ -35,6 +36,7 @@ namespace Uwp_Cs
                 _SessionManagerLock.Wait();
                 try
                 {
+                    m_Session = null;
                     if (_SessionManager != null)
                     {
                         _SessionManager.CurrentSessionChanged -= OnCurrentSessionChanged;
@@ -42,6 +44,7 @@ namespace Uwp_Cs
                     _SessionManager = value;
                     if (_SessionManager != null)
                     {
+                        m_Session = _SessionManager.GetCurrentSession();
                         _SessionManager.CurrentSessionChanged += OnCurrentSessionChanged;
                     }
                 }
@@ -58,22 +61,7 @@ namespace Uwp_Cs
         {
             get
             {
-                _SessionLock.Wait();
-                try
-                {
-                    if (_Session != null)
-                    {
-                        return _Session;
-                    }
-
-                    _Session = m_SessionManager.GetCurrentSession();
-                    _Session.PlaybackInfoChanged += OnPlaybackInfoChanged;
-                    return _Session;
-                }
-                finally
-                {
-                    _SessionLock.Release();
-                }
+                return _Session;
             }
             set
             {
@@ -121,8 +109,11 @@ namespace Uwp_Cs
 
         private void OnPlaybackInfoChanged(Session sender, PlaybackInfoChangedEventArgs args)
         {
-            var info = m_Session.GetPlaybackInfo();
-            Logging($"OnPlaybackInfoChanged: {info.PlaybackStatus}");
+            if (m_Session != null)
+            {
+                var info = m_Session.GetPlaybackInfo();
+                Logging($"OnPlaybackInfoChanged: {info.PlaybackStatus}");
+            }
         }
 
         public MediaManager()
@@ -133,7 +124,7 @@ namespace Uwp_Cs
         {
             if (m_SessionManager == null)
             {
-                var sessionManager = await SessionManager.RequestAsync();
+                var sessionManager = await SessionManager.RequestAsync().AsTask().ConfigureAwait(false);
                 sessionManager.CurrentSessionChanged += OnCurrentSessionChanged;
                 m_SessionManager = sessionManager;
             }
@@ -147,14 +138,39 @@ namespace Uwp_Cs
 
         public async Task<bool> PlayAsync()
         {
-            Logging($"Calling PlayMedia");
-            return await m_Session.TryPlayAsync();
+            if (m_Session != null)
+            {
+                Logging($"Calling PlayMedia");
+                return await m_Session.TryPlayAsync().AsTask().ConfigureAwait(false);
+            }
+            return false;
         }
 
         public async Task<bool> PauseAsync()
         {
-            Logging($"Calling PauseMedia");
-            return await m_Session.TryPauseAsync();
+            if (m_Session != null)
+            {
+                Logging($"Calling PauseMedia");
+                return await m_Session.TryPauseAsync().AsTask().ConfigureAwait(false);
+            }
+            return false;
+        }
+
+        public async Task<bool> ToggleAsync()
+        {
+            if (m_Session != null)
+            {
+                var info = m_Session.GetPlaybackInfo();
+                if (info.PlaybackStatus == PlaybackStatus.Playing)
+                {
+                    return await PauseAsync().ConfigureAwait(false);
+                }
+                else
+                {
+                    return await PlayAsync().ConfigureAwait(false);
+                }
+            }
+            return false;
         }
     }
 }

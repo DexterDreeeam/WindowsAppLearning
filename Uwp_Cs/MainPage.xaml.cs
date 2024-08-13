@@ -34,13 +34,11 @@ namespace Uwp_Cs
             try
             {
                 var mediaManager = new MediaManager();
-                await mediaManager.InitializeAsync();
+                await mediaManager.InitializeAsync().ConfigureAwait(false);
                 while (true)
                 {
-                    await Task.Delay(2000);
-                    await mediaManager.PlayAsync();
-                    await Task.Delay(2000);
-                    await mediaManager.PauseAsync();
+                    await Task.Delay(2000).ConfigureAwait(false);
+                    await mediaManager.ToggleAsync().ConfigureAwait(false);
                 }
             }
             catch (Exception ex)
