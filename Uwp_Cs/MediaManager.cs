@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,15 +22,7 @@ namespace Uwp_Cs
         {
             get
             {
-                _SessionManagerLock.Wait();
-                try
-                {
-                    return _SessionManager;
-                }
-                finally
-                {
-                    _SessionManagerLock.Release();
-                }
+                return _SessionManager;
             }
             set
             {
@@ -85,20 +78,16 @@ namespace Uwp_Cs
             }
         }
 
-        private readonly object _LogsLock = new object();
-        private List<string> m_Logs = new List<string>();
+        private ConcurrentQueue<string> m_Logs = new ConcurrentQueue<string>();
 
         private void Logging(string log)
         {
-            lock (_LogsLock)
+            if (m_Logs.Count >= 200)
             {
-                if (m_Logs.Count >= 100)
-                {
-                    m_Logs.Clear();
-                }
-                string ts = DateTime.Now.ToString("HH:mm:ss.fff");
-                m_Logs.Add($"[{ts}] {log}");
+                m_Logs.TryDequeue(out var _);
             }
+            string ts = DateTime.Now.ToString("HH:mm:ss.fff");
+            m_Logs.Enqueue($"[{ts}] {log}");
         }
 
         private void OnCurrentSessionChanged(SessionManager sender, CurrentSessionChangedEventArgs args)
