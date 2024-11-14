@@ -1,0 +1,13 @@
+{
+  "profiles": {
+    "WidgetsDataReaderPackaged (Package)": {
+      "commandName": "MsixPackage",
+      "remoteDebugEnabled": false,
+      "remoteDebugMachine": "vm3-Dashtest",
+      "authenticationMode": "None"
+    },
+    "WidgetsDataReaderPackaged (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}

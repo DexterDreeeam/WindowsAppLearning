@@ -1,0 +1,56 @@
+<Window
+    x:Class="WidgetsDataReaderPackaged.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WidgetsDataReaderPackaged"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Top">
+        <StackPanel Orientation="Horizontal">
+            <TextBox Width="200" Text="{x:Bind InputContainer, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <Button x:Name="Refresh" Click="OnRefresh">Refresh</Button>
+        </StackPanel>
+        <ListView
+            x:Name="SettingItemsList"
+            ItemsSource="{x:Bind SettingItems, Mode=OneWay}"
+            HorizontalAlignment="Stretch">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="local:SettingItem">
+                    <Grid VerticalAlignment="Top">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button Grid.Column="0" Click="OnDelete">
+                            <SymbolIcon Symbol="Delete" />
+                        </Button>
+                        <Button Grid.Column="1" Click="OnEdit">
+                            <SymbolIcon Symbol="Edit" />
+                        </Button>
+                        <Border Grid.Column="2" BorderBrush="Black" BorderThickness="1" Margin="5" Padding="2">
+                            <TextBlock Width="120" Height="20" Text="{x:Bind Name}" VerticalAlignment="Center"/>
+                        </Border>
+                        <Border Grid.Column="3" BorderBrush="Black" BorderThickness="1" Margin="5" Padding="2">
+                            <TextBlock Text="{x:Bind Value}" HorizontalAlignment="Right" VerticalAlignment="Center" TextWrapping="NoWrap"/>
+                        </Border>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <ContentDialog
+            x:Name="EditDialog"
+            Title="Edit Value"
+            PrimaryButtonText="Save"
+            SecondaryButtonText="Cancel"
+            CloseButtonText="Cancel">
+            <StackPanel>
+                <TextBox x:Name="EditTextBox" Width="200" />
+            </StackPanel>
+        </ContentDialog>
+    </StackPanel>
+</Window>
